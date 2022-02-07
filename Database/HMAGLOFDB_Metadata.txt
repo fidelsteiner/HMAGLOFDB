@@ -1,0 +1,79 @@
+!DATASET DESCRIPTION
+Name: HMAGLOFDB
+Description: Historic GLOFs in HMA
+Contact person: F. Shrestha, J.Steiner
+Email: finu.shrestha@icimod.org
+DOI: 
+
+!DATASET VARIABLES
+
+Variables can either bei alphanumerical (A/N), random text (TXT), text from a prescribed list (STR) or an integer (INT). For all integer options, '+' denotes that impact was >0 but numbers are unavailable.
+
+VAR	FORMAT	DESCRIPTION	UNIT
+GF_ID	A/N	Unique identifier for each event with the format GFXXXXXNYYYYYE_NNNN where X stands for latitude, Y longitude and N is an alphanumerical combination from the first three lake name letters and the chronological counter of GLOF occurence.	-
+Year_approx	TXT	Text describing time period when GLOF happened when no exact year is available.	-
+Year_exact	INT	Exact year the GLOF happened.	-
+Month	INT	Exact month the GLOF happened	-
+Day	INT	Exact day the GLOF happened. If GLOF took plave over multiple days, the last day is mentioned.
+Lake_name	TXT	Locally used lake name. If not available 'Unnamed'. Note that Co/Tsho/Pokhari are the regional words for '(small) lake'. The speling is used according to the country the lake lies in. Separate spelling is used here, i.e. 'Lure Co' over 'Lureco'	-
+Glacier_name	TXT	Locally used glacier name. If not available 'Unnamed'.	-
+GL_ID	A/N	Identifier for lake following the ICIMOD database on glacial lakes in the HKH. If visible but not mapped 'not mapped', if an ephermeral lake 'ephemeral', if no detectable trace of a lake 'no lake'.	-
+G_ID	A/N	Identifier for glacier, upstream of the glacial lake, following the GLIMS database. If visible but not mapped 'not mapped', if no detectable trace of a glacier 'no glacier'.	-
+Lat_lake	INT	Latitude of lake.	Decimal
+Lon_lake	INT	Longitude of lake.	Decimal
+Elev_lake	INT	Elevation of lake.	m a.s.l.
+Lat_impact	INT	Latitude of furthest observed impact.	Decimal
+Lon_impact	INT	Longitude of furthest observed impact.	Decimal
+Elev_impact	INT	Elevation of furthest observed imapct.	m a.s.l.
+Impact_type	STR	Evidence for furthest impact, either observed high flow ('Observation') or visible deposit from satellite imagery ('Deposit').	-
+Lake_type	STR	'Moraine dammed','Ice dammed', 'Bedrock', 'Landslide dammed', 'Englacial','Supraglacial','Unknown' -
+Transboundary	STR	Defines if lake is draining into another country anywhere along the downstream river reach ('Y') or not ('N'). Does not make a statement about whether the GLOF itself was transboundary.	-
+Repeat	STR	'Y' if the same lake drained before or after, 'N' if a unique event.	-
+Region	STR	Identifier for RGI region the GLOF occured in. 'HK' - Hindukush, 'KK' - Karakoram, 'WH' - Western Himalaya', 'CH' - Central Himalaya, 'EH' - Eastern Himalaya, 'HS' - Hengduan Shan, 'NQ' - Nyainqentanglha, 'PA' - Pamir, 'TW' Tien Shan West, 'TE' - Tien Shan East, 'IT' - Inner Tibet	-
+Country	STR	Country the GLOF started in	-
+Province	STR	Level 1 order province name of GLOF occurence	- 
+River_Basin	STR	Highest order river basin name the GLOF drained into. In transboundary cases the local name is used, hence the same river basin may appear under two different names. A list of respective translations is provided below. Individual name and local term for 'river' is written separately, i.e. 'Nian Chu' rather than 'Nianchu'. Exception is when the ending of '-qu' is used.
+Cause	STR	Reason for the GLOF happening; see list below.	-
+Area	INT	Lake area from inventory or on last available image before drainage	m2
+Volume	INT	Discharged volume (in most cases estimated from observed lake area change)	m3
+Discharge_water	INT	Observed or estimated discharge of water	m3 s-1
+Discharge_solid	INT	Observed or estimated discharge of solid material	m3 s-1
+Impact	TXT	Description of observed impacts downstream	-
+Lives_total	INT	Total lives lost	-
+Lives_male	INT	Total male lives lost	-
+Lives_female	INT	Total female lives lost	-
+Lives_disabilities	INT	Total lives of people with disabilities lost	-
+Injured_total	INT	Total injured	-
+Injured_male	INT	Total male injured	-
+Injured_female	INT	Total female injured	-
+Injured_disabilities	INT	Total people with disabilities injured	-
+Displaced_total	INT	Total displaced	-
+Displaced_male	INT	Total male displaced	-
+Displaced_female	INT	Total female displaced	-
+Displaced_disabilities	INT	Total people with disabilities displaced	-
+Livestock	INT	Total livestock killed (cattle, horses, mules etc; does not count poultry or fish)	-
+Residential_destroyed	INT	Total number of residential houses destroyed	-
+Commercial_destroyed	INT	Total number of commercial houses destroyed	-
+Residential_damaged	INT	Total number of residential houses damaged	-
+Commercial_damaged	INT	Total number of commercial houses damaged	-
+Infra	TXT	Information on any other infrastructure or assests destroyed or damaged.	-
+Agricultural	INT	Total agricultural land destroyed or seriously damaged.	m2
+Hydropower	INT	Total installed hydropower capacity destroyed	MW
+Econ_damage	INT	Total quantified damage in monetary terms.	USD
+Ref_scientific	TXT	Citation to scientific documentation of event.	-
+Ref_other	TXT	Link to other sources that documented the event.	-
+Remarks	TXT	Any other notes.
+
+!NOTES ON DATABASE COMPILATION
+
+Local names for lake: Co (China); Tsho (Bhutan); Pokhari (Nepal)
+Local names for river: Chhu (Bhutan, China), Tsangpo (China), '-qu' (China)
+
+Corresponding river basin names:
+
+Rongxia (China) = Tama Koshi (Nepal)
+Poiqu (China) = Sun Koshi (Nepal)
+Pumqu (China) = Arun (Nepal)
+Gyirong (China) = Trisuli (Nepal)
+
+Potential causes for GLOF: 'unknown', 'ice avalanche', 'landslide', 'intense rainfall', 'melt', 'moraine collapse', 'dam piping', 'dam seepage', 'rockfall', 'intense rainfall/moraine collapse', 'debris flow', 'ice core thawing', 'surging glacier', 'englacial drainage/high temperatures', 'surging glacier/high temperatures', 'glacier advance', 'intense rainfall/high temperatures', 'supraglacial lake drainage', 'subglacial drainage', 'glacier calving', 'dam piping/ice avalanche'
