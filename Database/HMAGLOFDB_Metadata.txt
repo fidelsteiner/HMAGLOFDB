@@ -18,6 +18,7 @@ Day	INT	Exact day the GLOF happened. If GLOF took plave over multiple days, the 
 Lake_name	TXT	Locally used lake name. If not available 'Unnamed'. Note that Co/Tsho/Pokhari are the regional words for '(small) lake'. The speling is used according to the country the lake lies in. Separate spelling is used here, i.e. 'Lure Co' over 'Lureco'	-
 Glacier_name	TXT	Locally used glacier name. If not available 'Unnamed'.	-
 GL_ID	A/N	Identifier for lake following the ICIMOD database on glacial lakes in the HKH. If visible but not mapped 'not mapped', if an ephermeral lake 'ephemeral', if no detectable trace of a lake 'no lake'.	-
+LakeDB_ID	INT	Database the lake was mapped in; 1 = Shrestha et al. 2022, 2 = Chen et al. 2021, 3 = Wang et al. 2020
 G_ID	A/N	Identifier for glacier, upstream of the glacial lake, following the GLIMS database. If visible but not mapped 'not mapped', if no detectable trace of a glacier 'no glacier'.	-
 Lat_lake	INT	Latitude of lake.	Decimal
 Lon_lake	INT	Longitude of lake.	Decimal
