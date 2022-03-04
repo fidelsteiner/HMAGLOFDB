@@ -35,10 +35,17 @@ DEM_file <- 'SRTM_Corrected_Extended_HMA.tif'
 outline_path <- 'D:\\Work\\GeospatialData\\HMA\\GlacierChangeData\\Lee2021\\SuppInfo_vectors\\SuppInfo_vectors'
 outline_file <- 'glaciers_LIA.shp'
 
+lakes_path <- 'D:\\Work\\ICIMODProjects\\TBWG\\LakeStandardization\\LakeDatabase'
+lakes_file <- 'Glacial_lake_EH_2020.shp'
+
 cls <- c(Elev_lake="numeric", Elev_impact="numeric")
 db_data <-read.csv(data_path&'\\'&db_file,header = T,sep=',')
 
 DEM_HMA <- raster(DEM_path&'\\'&DEM_file)
+
+ogrInfo(lakes_path&'\\'&lakes_file)
+lakes_outline<-readOGR(dsn=lakes_path&'\\'&lakes_file)
+lakes_outline <- spTransform(lakes_outline,CRSobj = "+proj=longlat +datum=WGS84 +no_defs")
 
 ogrInfo(outline_path&'\\'&outline_file)
 LIA_outline<-readOGR(dsn=outline_path&'\\'&outline_file)
