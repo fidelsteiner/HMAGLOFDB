@@ -2,7 +2,7 @@
 Name: HMAGLOFDB
 Description: Historic GLOFs in HMA
 Contact person: F. Shrestha, J.Steiner
-Email: finu.shrestha@icimod.org
+Email: finu.shrestha@icimod.org; jff.steiner@gmail.com
 DOI: 
 
 !DATASET VARIABLES
@@ -18,7 +18,7 @@ Day	INT	Exact day the GLOF happened. If GLOF took plave over multiple days, the 
 Lake_name	TXT	Locally used lake name. If not available 'Unnamed'. Note that Co/Tsho/Pokhari are the regional words for '(small) lake'. The speling is used according to the country the lake lies in. Separate spelling is used here, i.e. 'Lure Co' over 'Lureco'	-
 Glacier_name	TXT	Locally used glacier name. If not available 'Unnamed'.	-
 GL_ID	A/N	Identifier for lake following the ICIMOD database on glacial lakes in the HKH. If visible but not mapped 'not mapped', if an ephermeral lake 'ephemeral', if no detectable trace of a lake 'no lake'.	-
-LakeDB_ID	INT	Database the lake was mapped in; 1 = Shrestha et al. 2022, 2 = Chen et al. 2021, 3 = Wang et al. 2020
+LakeDB_ID	INT	Lake database identifier (1 - this study/ICIMOD, 2 - Wang2020 (1990), 3 - Wang2020 (2018), 4 - Chen2021); see the paper for a discussion of the inventories
 G_ID	A/N	Identifier for glacier, upstream of the glacial lake, following the GLIMS database. If visible but not mapped 'not mapped', if no detectable trace of a glacier 'no glacier'.	-
 Lat_lake	INT	Latitude of lake.	Decimal
 Lon_lake	INT	Longitude of lake.	Decimal
@@ -30,7 +30,8 @@ Impact_type	STR	Evidence for furthest impact, either observed high flow ('Observ
 Lake_type	STR	'Moraine dammed','Ice dammed', 'Bedrock', 'Landslide dammed', 'Englacial','Supraglacial','Unknown' -
 Transboundary	STR	Defines if lake is draining into another country anywhere along the downstream river reach ('Y') or not ('N'). Does not make a statement about whether the GLOF itself was transboundary.	-
 Repeat	STR	'Y' if the same lake drained before or after, 'N' if a unique event.	-
-Region	STR	Identifier for RGI region the GLOF occured in. 'HK' - Hindukush, 'KK' - Karakoram, 'WH' - Western Himalaya', 'CH' - Central Himalaya, 'EH' - Eastern Himalaya, 'HS' - Hengduan Shan, 'NQ' - Nyainqentanglha, 'PA' - Pamir, 'TW' Tien Shan West, 'TE' - Tien Shan East, 'IT' - Inner Tibet	-
+Region_RGI	STR	Identifier for RGI region the GLOF occured in, following the RGI_CODE
+Region_HiMAP	STR	Identifier for HiMAP region the GLOF occured in, following the OBJECTID
 Country	STR	Country the GLOF started in	-
 Province	STR	Level 1 order province name of GLOF occurence	- 
 River_Basin	STR	Highest order river basin name the GLOF drained into. In transboundary cases the local name is used, hence the same river basin may appear under two different names. A list of respective translations is provided below. Individual name and local term for 'river' is written separately, i.e. 'Nian Chu' rather than 'Nianchu'. Exception is when the ending of '-qu' is used.
