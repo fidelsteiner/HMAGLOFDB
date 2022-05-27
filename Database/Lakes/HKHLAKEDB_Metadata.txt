@@ -1,0 +1,22 @@
+!DATASET DESCRIPTION
+Name: HKHLAKEDB
+Description: Decadal lake maps for the HKH
+Contact person: F. Shrestha, J.Steiner
+Email: finu.shrestha@icimod.org; jff.steiner@gmail.com
+DOI: 
+
+!DATASET VARIABLES
+
+The dataset includes .shp files for the years 2000, 2005, 2010 and 2020. Methods of how the lakes were delineated are described in http://lib.icimod.org/record/33736. The original dataset encompasses mapped lakes for the year 2005 (+/- 2years), while the same approach was used for the other three timesteps subsequently.
+
+Major basin name 	string 	text 	Drainage basin name based on maps and literature reviews
+Basin name 		string 	text 	Drainage basin name based on maps and literature reviews
+Sub-basin name 		string 	text 	Drainage basin name based on maps and literature reviews
+Longitude 		string 	DMS 	Longitude of centre of glacial lake
+Latitude 		string 	DMS 	Latitude of centre of glacial lake
+GLIMS_ID 		string 	GLXXXXXXEYYYYYN 	Combination of longitude (X) and latitude (Y) of the centroid of the lake polygon. GL = glacial lake, E = East, N = North.
+Altitude 		integer 	metre above mean sea level (masl) 	Water level of glacial lake. Extracted from SRTM
+Area 			float 	km2 	Area of glacial lake. Calculated based on the Albers equal area conic projection
+Gl_Type 		string 	- 	Type of glacial lake
+Image_ID 		string 	Image 	ID same as downloaded images (includes row, path, and data of images acquisition)
+Date 			date 	YYYYMMDD 	Date of the image used for mapping GL
