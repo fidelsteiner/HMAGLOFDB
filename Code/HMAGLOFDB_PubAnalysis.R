@@ -1,15 +1,20 @@
 ################################################################################
-# Analysis of all GLOF events from database
+# Analysis of all GLOF events from the HMAGLOFDB
 # 
 # HMAGLOFDB_Analysis.R
 #
 # ReadMe: 
-# Read and analyze discharge data from Langtang
+# Read and analyze GLOF events
+# 1) Read out database
+# 2) Extract topographic variables for impact analysis
+# 3) Pairing with RGI + dhdt datasets
+# 4) Pairing with permafrost map
+#
 #
 #
 #
 # Created:          2022/02/05
-# Latest Revision:  2022/02/05
+# Latest Revision:  2022/06/15
 #
 #
 # Jakob F Steiner| ICIMOD | jakob.steiner@icimod.org | x-hydrolab.org 
@@ -25,6 +30,10 @@ gc()
 
 library('geosphere')
 library(leastcostpath)
+
+################ 
+# paths and raw data
+################
 
 data_path <- 'D:\\Work\\ICIMODProjects\\GLOF_Database'
 db_file <- 'HMAGLOFDB_20220205.csv'
@@ -51,14 +60,16 @@ ogrInfo(outline_path&'\\'&outline_file)
 LIA_outline<-readOGR(dsn=outline_path&'\\'&outline_file)
 LIA_outline <- spTransform(LIA_outline,CRSobj = "+proj=longlat +datum=WGS84 +no_defs")
 
-# Read out specific GLOF
+################ 
+# Extract topographic data
+################
 
 #par(mfrow=c(4,4),mar=c(1,2,1,3),mai = c(0.1, 0.1, 0.1, 0.1),cex.lab=1,cex.axis=1)  
 
-flowpathL <- vector()
-flowPathH <- vector()
-flowPathalpha_mean <- vector()
-flowPathalpha_max <- vector()
+flowpathL <- vector() # initialize empty vector for flow length
+flowPathH <- vector() # initialize empty vector for drop height
+flowPathalpha_mean <- vector()  # initialize empty vector for mean slope
+flowPathalpha_max <- vector()   # initialize empty vector for max slope
 
 
 for(k in 245:length(db_data$GF_ID)){
