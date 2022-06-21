@@ -66,7 +66,7 @@ LIA_outline <- spTransform(LIA_outline,CRSobj = "+proj=longlat +datum=WGS84 +no_
 
 #par(mfrow=c(4,4),mar=c(1,2,1,3),mai = c(0.1, 0.1, 0.1, 0.1),cex.lab=1,cex.axis=1)  
 
-flowpathL <- vector() # initialize empty vector for flow length
+flowpathL <- vector() # initialize empty vector for flow length of the GLOF
 flowPathH <- vector() # initialize empty vector for drop height
 flowPathalpha_mean <- vector()  # initialize empty vector for mean slope
 flowPathalpha_max <- vector()   # initialize empty vector for max slope
