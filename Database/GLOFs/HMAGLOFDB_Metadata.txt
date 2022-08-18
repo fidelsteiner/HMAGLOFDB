@@ -7,7 +7,7 @@ DOI:
 
 !DATASET VARIABLES
 
-Variables can either bei alphanumerical (A/N), random text (TXT), text from a prescribed list (STR) or an integer (INT). For all integer options, '+' denotes that impact was >0 but numbers are unavailable.
+Remarks		Variables can either be alphanumerical (A/N), random text (TXT), text from a prescribed list (STR) or an integer (INT). For all integer options, '+' denotes that impact was >0 but numbers are unavailable.
 
 VAR	FORMAT	DESCRIPTION	UNIT
 GF_ID	A/N	Unique identifier for each event with the format GFXXXXXNYYYYYE_NNNN where X stands for latitude, Y longitude and N is an alphanumerical combination from the first three lake name letters and the chronological counter of GLOF occurence.	-
@@ -30,14 +30,16 @@ Impact_type	STR	Evidence for furthest impact, either observed high flow ('Observ
 Lake_type	STR	'Moraine dammed','Ice dammed', 'Bedrock', 'Landslide dammed', 'Englacial','Supraglacial','Unknown' -
 Transboundary	STR	Defines if lake is draining into another country anywhere along the downstream river reach ('Y') or not ('N'). Does not make a statement about whether the GLOF itself was transboundary.	-
 Repeat	STR	'Y' if the same lake drained before or after, 'N' if a unique event.	-
-Region_RGI	STR	Identifier for RGI region the GLOF occured in, following the RGI_CODE
-Region_HiMAP	STR	Identifier for HiMAP region the GLOF occured in, following the OBJECTID
-Country	STR	Country the GLOF started in	-
-Province	STR	Level 1 order province name of GLOF occurence	- 
+Region_RGI	STR	Identifier for RGI region the GLOF occured in, following the RGI_CODE (see: https://nsidc.org/sites/nsidc.org/files/technical-references/RGI_Tech_Report_V6.0.pdf)
+Region_HiMAP	STR	Identifier for HiMAP region the GLOF occured in, following the OBJECTID (https://doi.org/10.1007/978-3-319-92288-1_7)
+Country	STR	Country the GLOF started in. Refers to borders as in 2022, also for events that happened at a time when current (national) boundaries did not exist or were different.	-
+Province	STR	Level 1 order province name of GLOF occurence. Refers to borders as in 2022, also for events that happened at a time when current (national) boundaries did not exist or were different.	- 
 River_Basin	STR	Highest order river basin name the GLOF drained into. In transboundary cases the local name is used, hence the same river basin may appear under two different names. A list of respective translations is provided below. Individual name and local term for 'river' is written separately, i.e. 'Nian Chu' rather than 'Nianchu'. Exception is when the ending of '-qu' is used.
-Cause	STR	Reason for the GLOF happening; see list below.	-
-Area	INT	Lake area from inventory or on last available image before drainage	m2
-Volume	INT	Discharged volume (in most cases estimated from observed lake area change)	m3
+Driver_lake	STR	Climatic or non-climatic driver that resulted in formation of the lake (e.g. surging glacier, supraglacial melt)	-
+Driver_GLOF	STR	Climatic or non-climatic driver that caused the GLOF (e.g. earthquake, ice avalanche, high temperatures)	-
+Mechanism	STR	Mechanism that caused the lake to breach or drain (e.g. morain collapse, dam seepage)	-
+Area	INT	Lake area from inventory or on last available image before drainage or from local information	m2
+Volume	INT	Discharged volume (in most cases estimated from observed lake area change; see discussion of uncertainties in manuscript)	m3
 Discharge_water	INT	Observed or estimated discharge of water	m3 s-1
 Discharge_solid	INT	Observed or estimated discharge of solid material	m3 s-1
 Impact	TXT	Description of observed impacts downstream	-
@@ -78,4 +80,6 @@ Poiqu (China) = Sun Koshi (Nepal)
 Pumqu (China) = Arun (Nepal)
 Gyirong (China) = Trisuli (Nepal)
 
-Potential causes for GLOF: 'unknown', 'ice avalanche', 'landslide', 'intense rainfall', 'melt', 'moraine collapse', 'dam piping', 'dam seepage', 'rockfall', 'intense rainfall/moraine collapse', 'debris flow', 'ice core thawing', 'surging glacier', 'englacial drainage/high temperatures', 'surging glacier/high temperatures', 'glacier advance', 'intense rainfall/high temperatures', 'supraglacial lake drainage', 'subglacial drainage', 'glacier calving', 'dam piping/ice avalanche'
+Potential drivers for lake formation: 'unknown',  'melt', 'surging glacier', 'glacier advance', 'glacier calving'
+Potential drivers for GLOFs: 'unknown', 'ice avalanche', 'landslide', 'intense rainfall', 'rockfall', 'debris flow', 'high temperatures'
+Potential GLOF mechanisms: 'unknown', 'moraine collapse', 'dam piping', 'dam seepage', 'ice core thawing', 'englacial tunnel', 'supraglacial lake drainage', 'subglacial tunnel'
