@@ -1,6 +1,6 @@
 # HMAGLOFDB
 
-![alt text](https://github.com/fidelsteiner/HMAGLOFDB/logoHMAGLOFDB.png?raw=true)
+![alt text](https://github.com/fidelsteiner/HMAGLOFDB/blob/main/logoHMAGLOFDB.png?raw=true)
 
 Database of all GLOFs in high-Mountain Asia
 
