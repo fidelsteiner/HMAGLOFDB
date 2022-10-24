@@ -2,7 +2,7 @@
 
 ![alt text](https://github.com/fidelsteiner/HMAGLOFDB/blob/main/logoHMAGLOFDB.png?raw=true)
 
-Database of all GLOFs in high-Mountain Asia
+Database of all GLOFs in high mountain Asia
 
 The repository includes the most up to date database as well as code that was used to analyse the database for the associated publication (XXXX). 
 
