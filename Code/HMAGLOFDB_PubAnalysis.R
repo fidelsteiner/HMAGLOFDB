@@ -429,11 +429,8 @@ for(i in 1: dim(wangComb_UTM)[1]){
   }
 }
 
-
 lakeglacierDis_ICIMOD <- vector()
 subSetICIMOD <- which(is.na(match(combAll$GLIMS_ID,wangComb$GLAKE_ID)))
-
-
 
 for(i in 1: length(subSetICIMOD)){
   lakeBB <- st_bbox(combAll_UTM$geometry[subSetICIMOD[i]])
@@ -466,7 +463,78 @@ for(i in 1: length(subSetICIMOD)){
   }
 }
 
+lakeglacierDis_Chen <- vector()
+subSetChen <- which(is.na(match(chenComb$GL_ID,c(wangComb$GLAKE_ID,combAll$GLIMS_ID))))
 
+for(i in 1: length(subSetChen)){
+  lakeBB <- st_bbox(chenComb$geometry[subSetChen[i]])
+  
+  
+  if(as.numeric(lakeBB[1])>as.numeric(RGI13BB[1])&&as.numeric(lakeBB[2])>as.numeric(RGI13BB[2])&&as.numeric(lakeBB[3])<as.numeric(RGI13BB[3])&&as.numeric(lakeBB[4])<as.numeric(RGI13BB[4])){
+    
+    cropRGI <- st_crop(RGI60_13_UTM,lakeBB+c(-5000,-5000,5000,5000))
+    if(dim(cropRGI)[1]==0){
+      lakeglacierDis_Chen[i] <- NA
+    }else{
+      lakeglacierDis_Chen[i] <- min(st_distance(chenComb$geometry[subSetChen[i]],cropRGI))
+    }
+  }else if(as.numeric(lakeBB[1])>as.numeric(RGI14BB[1])&&as.numeric(lakeBB[2])>as.numeric(RGI14BB[2])&&as.numeric(lakeBB[3])<as.numeric(RGI14BB[3])&&as.numeric(lakeBB[4])<as.numeric(RGI14BB[4])){
+    cropRGI <- st_crop(RGI60_14_UTM,lakeBB+c(-5000,-5000,5000,5000))
+    if(dim(cropRGI)[1]==0){
+      lakeglacierDis_Chen[i] <- NA
+    }else{
+      lakeglacierDis_Chen[i] <- min(st_distance(chenComb$geometry[subSetChen[i]],cropRGI))
+    }
+  }else if(as.numeric(lakeBB[1])>as.numeric(RGI15BB[1])&&as.numeric(lakeBB[2])>as.numeric(RGI15BB[2])&&as.numeric(lakeBB[3])<as.numeric(RGI15BB[3])&&as.numeric(lakeBB[4])<as.numeric(RGI15BB[4])){
+    cropRGI <- st_crop(RGI60_15_UTM,lakeBB+c(-5000,-5000,5000,5000))
+    if(dim(cropRGI)[1]==0){
+      lakeglacierDis_Chen[i] <- NA
+    }else{
+      lakeglacierDis_Chen[i] <- min(st_distance(chenComb$geometry[subSetChen[i]],cropRGI))
+    }
+  }else{
+    lakeglacierDis_Chen[i] <- NA
+  }
+}
+
+dbLat <- db_data$Lat_lake
+dbLat[duplicated(dbLat)] <- NA
+uniquedb <- which(!is.na(dbLat))
+
+for(i in 1: length(uniquedb)){
+  
+  cord.dec <- SpatialPoints(cbind(db_data$Lon_lake[uniquedb[i]],db_data$Lat_lake[uniquedb[i]]), proj4string=CRS("+proj=longlat +datum=WGS84 +no_defs"))
+  cord.UTM <- spTransform(cord.dec, CRS(projec_utm))
+  
+  lakeBB <- st_bbox(cord.UTM)
+  
+  if(as.numeric(lakeBB[1])>as.numeric(RGI13BB[1])&&as.numeric(lakeBB[2])>as.numeric(RGI13BB[2])&&as.numeric(lakeBB[3])<as.numeric(RGI13BB[3])&&as.numeric(lakeBB[4])<as.numeric(RGI13BB[4])){
+    
+    cropRGI <- st_crop(RGI60_13_UTM,lakeBB+c(-5000,-5000,5000,5000))
+    if(dim(cropRGI)[1]==0){
+      lakeglacierDis_DB[i] <- NA
+    }else{
+      lakeglacierDis_DB[i] <- geosphere::dist2Line(p = st_bbox(cord.dec), line = st_transform(cropRGI,crs="+proj=longlat +datum=WGS84 +no_defs"))
+    }
+  }else if(as.numeric(lakeBB[1])>as.numeric(RGI14BB[1])&&as.numeric(lakeBB[2])>as.numeric(RGI14BB[2])&&as.numeric(lakeBB[3])<as.numeric(RGI14BB[3])&&as.numeric(lakeBB[4])<as.numeric(RGI14BB[4])){
+    cropRGI <- st_crop(RGI60_14_UTM,lakeBB+c(-5000,-5000,5000,5000))
+    if(dim(cropRGI)[1]==0){
+      lakeglacierDis_Chen[i] <- NA
+    }else{
+      lakeglacierDis_Chen[i] <- min(st_distance(chenComb$geometry[subSetChen[i]],cropRGI))
+    }
+  }else if(as.numeric(lakeBB[1])>as.numeric(RGI15BB[1])&&as.numeric(lakeBB[2])>as.numeric(RGI15BB[2])&&as.numeric(lakeBB[3])<as.numeric(RGI15BB[3])&&as.numeric(lakeBB[4])<as.numeric(RGI15BB[4])){
+    cropRGI <- st_crop(RGI60_15_UTM,lakeBB+c(-5000,-5000,5000,5000))
+    if(dim(cropRGI)[1]==0){
+      lakeglacierDis_Chen[i] <- NA
+    }else{
+      lakeglacierDis_Chen[i] <- min(st_distance(chenComb$geometry[subSetChen[i]],cropRGI))
+    }
+  }else{
+    lakeglacierDis_Chen[i] <- NA
+  } 
+  
+}
 
 #par(mfrow=c(4,4),mar=c(1,2,1,3),mai = c(0.1, 0.1, 0.1, 0.1),cex.lab=1,cex.axis=1)  
 
