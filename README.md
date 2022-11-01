@@ -1,6 +1,6 @@
 # HMAGLOFDB
 
-![alt text](https://github.com/fidelsteiner/HMAGLOFDB/blob/main/ICONs_HazardDashboard_No-text-05.png.png?raw=true)
+![alt text](https://github.com/fidelsteiner/HMAGLOFDB/blob/main/ICONs_HazardDashboard_No-text-05.png?raw=true)
 
 Database of all GLOFs in high mountain Asia
 
