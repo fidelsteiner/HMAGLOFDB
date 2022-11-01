@@ -67,6 +67,7 @@ Econ_damage	INT	Total quantified damage in monetary terms.	USD
 Ref_scientific	TXT	Citation to scientific documentation of event.	-
 Ref_other	TXT	Link to other sources that documented the event.	-
 Remarks	TXT	Any other notes.
+Certainty (only for the removed cases)	INT	0 = definitely not a GLOF; 1 = possibly a GLOF
 
 !NOTES ON DATABASE COMPILATION
 
