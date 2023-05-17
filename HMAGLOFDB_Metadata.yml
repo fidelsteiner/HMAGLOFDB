@@ -1,0 +1,740 @@
+name: HMAGLOFDB
+version: 1.0.1-beta
+created: '2023-05-03T13:12:01Z'
+id: https://doi.org/10.5281/zenodo.7271188
+title: High Mountain Asia Glacier Lake Outburst Flood Database (HMAGLOFDB)
+description: |-
+  Historic GLOFs in HMA. The latest development version can be accessed on https://github.com/fidelsteiner/HMAGLOFDB. However this data is not necessarily quality controlled before an official release. Issues or new events can be reported by contacting the authors (jff.steiner@gmail.com). For all integer options, '+' denotes that impact was >0 but numbers are unavailable.
+
+publications:
+  - author: Finu Shrestha, Jakob Steiner, Reeju Shrestha, Yathartha Dhungel, Sharad P. Joshi, Sam Inglish, Arshad Ashraf, Sher Wali, Khwaja Moin Walizada, Taigang Zhang
+    title: HMAGLOFDB v1.0 – a comprehensive and version controlled database of glacier lake outburst floods in high mountain Asia
+    journal: in review
+    year: 2023
+    path: https://doi.org/10.5194/essd-2022-395
+profile: tabular-data-package
+temporalCoverage: 1830-06-31
+spatialCoverage: high mountain Asia
+languages:
+  - en
+licenses:
+  - title: Creative Commons Attribution 4.0 International
+    name: CC-BY-4.0
+    path: https://creativecommons.org/licenses/by/4.0
+citation: |-
+  Steiner and Shrestha (2023): HMAGLOFDB 1.0.1 -  Database of GLOFs in high mountain Asia  (https://doi.org/10.5281/zenodo.7271188)
+sources:
+  - title: TBD
+    path: TBD
+resources:
+  - name: HMAGLOFDB
+    title: Event database
+    description: Record of all events including sources, types and impacts.
+    path: Database/GLOFs/HMAGLOFDB.csv
+    format: csv
+    mediatype: text/csv
+    encoding: utf-8
+    dialect:
+      header: true
+      delimiter: ','
+      lineTerminator: "\n"
+      quoteChar: '"'
+      doubleQuote: true
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: GF_ID
+          title: Event identifier
+          description: Unique id for GLOF event, starting at 1.
+          type: integer
+          constraints:
+            required: true
+            unique: true
+        - name: Year_approx
+          title: Approximate year
+          description: Year of occurrence; given approximately if GLOF has been identified from imagery with no definite account. 
+          type: string
+        - name: Year_exact
+          title: Year of event
+          description: Exact year of event.
+          type: date
+          format: '%Y'
+        - name: Sat_evidence
+          title: Image IDs used as satellite imagery evidence
+          description: For cases where no exact date is known this column provides imagery names from the Landsat legacy products that either provide the first known evidence (hence constraining it to any date or eaelier) or two images that provide a time frame during which the event must have occured.
+          type: string
+        - name: Month
+          title: Month of occurence
+          description: Precise month of event if known.
+          type: date
+          format: '%m'
+        - name: Day
+          title: Day of occurence
+          description: Exact day the GLOF happened. If GLOF took place over multiple days, the last day is mentioned.
+          type: date
+          format: '%m'
+        - name: Lake_name
+          title: Lake name
+          description: Locally used lake name. If not available 'Unnamed'. Note that Co/Tsho/Pokhari are the regional words for 'lake'. The spelling is used according to the country the lake lies in. Separate spelling is used here, i.e. 'Lure Co' over 'Lureco'. Local names for lake: Co (China); Tsho (Bhutan/Nepal); Pokhari (Nepal). 
+          type: string
+        - name: Glacier_name
+          title: Glacier name
+          description: Locally used glacier name. If not available 'Unnamed'.
+          type: string
+        - name: GL_ID
+          title: Glacial lake identifier
+          description: |-
+            Identifier for lake following the ICIMOD database on glacial lakes in the HKH. If visible but not mapped 'not mapped', if an ephermeral lake 'ephemeral', if no detectable trace of a lake 'no lake'.
+
+            - not mapped: not in inventories
+            - ephemeral: ephemeral lake, possibly not visible in imagery 
+            - no lake: no lake detected and no further information available
+          type: string
+        - name: LakeDB_ID
+          title: Identifier for the database the lake was mapped in
+          description: |-
+            Lake database identifier (2 - Wang2020 (1990), 3 - Wang2020 (2018), 4 - Chen (2021); see the paper for a discussion of the inventories
+
+            - 2: Wang2020 (1990) 
+            - 3: Wang2020 (2018)
+		- 4: Chen2021
+          type: string
+        - name: G_ID
+          title: Glacier identifier
+          description: |-
+            Identifier for glacier, upstream of the glacial lake, following the GLIMS database. If visible but not mapped 'not mapped', if no detectable trace of a glacier 'no glacier'.
+
+            - not mapped: not in inventory
+            - no glacier: not in inventory and no present glacier visible. 
+          type: string
+        - name: Lat_lake
+          title: Latitude of source lake (°, WGS 84)
+          description: Latitude of lake taken from the inventory or mapped from satellite imagery. Can be at any point within the lake boundary.
+          constraints:
+            minimum: -90
+            maximum: 90
+          type: decimal
+        - name: Lon_lake
+          title: Longitude of source lake (°, WGS 84)
+          description: Longitude of lake taken from the inventory or mapped from satellite imagery. Can be at any point within the lake boundary.
+          constraints:
+            minimum: -180
+            maximum: 180
+          type: decimal
+        - name: Elev_lake
+          title: Elevation of source lake
+          description: Elevation of lake taken from the inventory or taken from SRTM. Can be at any point within the lake boundary. m a.s.l.
+          type: integer
+        - name: Lat_impact
+          title: Latitude of furthest observed impact (°, WGS 84)
+          description: Latitude of furthest reported or mapped impact the GLOF had (high flow, debris deposit, etc).
+          constraints:
+            minimum: -90
+            maximum: 90
+          type: decimal
+        - name: Lon_impact
+          title: Longitude of furthest observed impact (°, WGS 84)
+          description: Longitude of furthest reported or mapped impact the GLOF had (high flow, debris deposit, etc).
+          constraints:
+            minimum: -180
+            maximum: 180
+          type: decimal
+        - name: Elev_impact
+          title: Elevation of furthest observed impact.
+          description: Elevation of furthest reported or mapped impact the GLOF had (high flow, debris deposit, etc). m a.s.l.
+          type: integer
+        - name: Impact_type
+          title: Type of identification of impact
+          description: |-
+            Quality of impact record; ‘Observation’ refers to lowest observed high flow or damages; ‘Deposit’ refers to lowest visible deposit of sediments (from satellite imagery). Impacts are therefore conservative, and are likely always further downstream than recorded.
+
+            - Observation: impact noted locally
+            - Deposit: impact visible on satellite imagery 
+          type: string
+          constraints:
+            enum: ['Observation', 'Deposit', 'other']
+        - name: Lake_type
+          title: Type of source lake.
+          description: |-
+            Type of source lake as documented in literature or from imagery.
+
+            - Moraine dammed: moraine dammed lake
+            - Ice dammed: ice dammed lake 
+            - Bedrock: lake on bedrock
+            - Landslide dammed: landslide dammed lake  
+            - Water pocket: englacial water pocket
+            - Supraglacial: supraglacial lake
+            - Unknown: unknown type      
+          type: string
+          constraints:
+            enum: ['Moraine dammed', 'Ice dammed', 'Bedrock', 'Landslide dammed', 'Water pocket', 'Supraglacial', 'Unknown']
+        - name: Transboundary
+          title: Potential transboundary GLOF event
+          description: Defines if lake is draining into another country anywhere along the downstream river reach ('Y') or not ('N'). Does not make a statement about whether the GLOF itself was transboundary.
+          type: string
+          constraints:
+            enum: ['Y','N']
+        - name: Repeat
+          title: Repeat event
+          description: 'Y' if the same lake drained before or after, 'N' if a unique event.
+          type: string
+          constraints:
+            enum: ['Y','N']
+        - name: Region_RGI
+          title: RGI Region number.
+          description: Identifier for RGI region the GLOF occured in, following the RGI_CODE (see: https://nsidc.org/sites/nsidc.org/files/technical-references/RGI_Tech_Report_V6.0.pdf)
+          type: string
+        - name: Region_HiMAP
+          title: HiMAP Region number.
+          description: Identifier for HiMAP region the GLOF occured in, following the OBJECTID (https://doi.org/10.1007/978-3-319-92288-1_7)
+          type: integer
+        - name: Country
+          title: Country of GLOF
+          description: Country the GLOF started in. Refers to borders as in 2022, also for events that happened at a time when current (national) boundaries did not exist or were different.
+          type: string
+        - name: Province
+          title: Province of GLOF
+          description: Level 1 order province name of GLOF occurence. Refers to borders as in 2022, also for events that happened at a time when current (national) boundaries did not exist or were different.
+          type: string
+        - name: River_Basin
+          title: River Basin of GLOF
+          description: |-
+		Highest order river basin name the GLOF drained into. In transboundary cases the local name is used, hence the same river basin may appear under two different names. Individual name and local term for 'river' is written separately, i.e. 'Nian Chu' rather than 'Nianchu'. Exception is when the ending of '-qu' is used. Local names for river: Chhu (Bhutan, China), Tsangpo (China), '-qu' (China)
+		Rongxia (China) = Tama Koshi (Nepal)
+		Poiqu (China) = Sun Koshi (Nepal)
+		Pumqu (China) = Arun (Nepal)
+		Gyirong (China) = Trisuli (Nepal)
+          type: string
+        - name: Driver_lake
+          title: Driver of initial lake formation
+          description: |-
+            Climatic or non-climatic driver that resulted in formation of the lake (e.g. surging glacier, supraglacial melt)
+
+            - unknown: unknown formation process
+            - melt: any type of melt water input from upstream
+		- surging glacier: surging tongue blocking of stream
+		- glacier advance: advancing glacier tongue blocking of stream
+		- glacier calving: disintegration of glacier tongue into a lake  
+          type: string
+          constraints:
+            enum: ['unknown',  'melt', 'surging glacier', 'glacier advance', 'glacier calving']
+        - name: Driver_GLOF
+          title: Driver of the GLOF event
+          description: |-
+            Climatic or non-climatic driver that caused the GLOF
+
+            - unknown: unknown driver
+            - ice avalanche: ice avalanche hitting the lake
+		- landslide: landslide into the lake causing overtopping or dam failure
+		- intense rainfall: sudden intense rainfall resulting in increased hydrostatic pressure
+		- rockfall: rockfall into the lake causing overtopping or dam failure
+ 		- debris flow: debris flow into the lake causing overtopping or dam failure
+		- high temperatures: sudden heat onset resulting in rapid melt influx resulting eventually in a breach/failure
+          type: string
+          constraints:
+            enum: ['unknown', 'ice avalanche', 'landslide', 'intense rainfall', 'rockfall', 'debris flow', 'high temperatures']
+        - name: Mechanism
+          title: GLOF drainage mechanism
+          description: |-
+            Mechanism that caused the lake to breach or drain
+
+            - unknown: unknown process
+            - moraine collapse: dam/moraine collapse leading to drainage
+            - dam piping: dam/moraine collapse leading to drainage
+            - dam seepage: gradual drainage of water through the dam resulting in eventual collapse
+            - ice core thawing: known ice core at the center of the dam failing with increasing temperature
+            - englacial tunnel: tunnel forming englacially for ice dammed lake
+            - supraglacial lake drainage: rapid drainage of a supraglacial lake 
+            - subglacial tunnel: drainage any lake type subglacially 
+          type: string
+          constraints:
+            enum: ['unknown', 'moraine collapse', 'dam piping', 'dam seepage', 'ice core thawing', 'englacial tunnel', 'supraglacial lake drainage', 'subglacial tunnel']
+        - name: Area
+          title: Lake area before drainage
+          description: Lake area from source or on last available image before drainage or from local information
+          type: integer
+          unit: 'm2'
+        - name: Volume
+          title: Flood volume
+          description: Discharged volume (in most cases estimated from observed lake area change; see discussion of uncertainties in manuscript)
+          type: integer
+          unit: 'm3'
+        - name: Discharge_water
+          title: Liquid water discharge
+          description: Observed or estimated discharge of water
+          type: integer
+          unit: 'm3 s-1'
+        - name: Discharge_solid
+          title: Solid discharge
+          description: Observed or estimated discharge of solid material (i.e. debris flow volume)
+          type: integer
+          unit: 'm3 s-1'
+        - name: Impact
+          title: Downstream impact of GLOF
+          description: Narrative description of observed impacts downstream
+          constraints:
+            pattern: '[^"\s]+( [^"\s]+)*'
+          type: string
+        - name: Lives_total
+          title: Total lives lost
+          description: Total lives lost
+          type: integer
+        - name: Lives_male
+          title: Total male lives lost
+          description: Total male lives lost
+          type: integer
+        - name: Lives_female
+          title: Total female lives lost
+          description: Total female lives lost
+          type: integer
+        - name: Lives_disabilities
+          title: Total lives with disabilities lost
+          description: Total lives of people with disabilities lost
+          type: integer
+        - name: Injured_total
+          title: Total injured
+          description: Total number of people injured
+          type: integer
+        - name: Injured_male
+          title: Total male injured
+          description: Total male injured
+          type: integer
+        - name: Injured_female
+          title: Total female injured
+          description: Total number of women injured
+          type: integer
+        - name: Injured_disabilities
+          title: Total people with disabilities injured
+          description: Total number of people with disabilities injured
+          type: integer
+        - name: Displaced_total
+          title: Total displaced
+          description: Total number of people displaced
+          type: integer
+        - name: Displaced_male
+          title: Total male displaced
+          description: Total number of men displaced
+          type: integer
+        - name: Displaced_female
+          title: Total female displaced
+          description: Total number of women displaced
+          type: integer
+        - name: Displaced_disabilities
+          title: Total people with disabilities displaced
+          description: Total number of people with disabilities displaced
+          type: integer
+        - name: Livestock
+          title: Livestock killed
+          description: Total livestock killed (cattle, horses, mules etc; does not count poultry or fish)
+          type: integer
+        - name: Residential_destroyed
+          title: Residential houses destroyed
+          description: Total number of residential houses destroyed
+          type: integer
+        - name: Commercial_destroyed
+          title: Commercial houses destroyed
+          description: Total number of commercial houses destroyed
+          type: integer
+        - name: Residential_damaged
+          title: Residential houses damaged
+          description: Total number of residential houses damaged
+          type: integer
+        - name: Commercial_damaged
+          title: Commercial houses damaged
+          description: Total number of commercial houses damaged
+          type: integer
+        - name: Infra
+          title: General information on infrastructure damage
+          description: Information on any other infrastructure or assests destroyed or damaged.
+          constraints:
+            pattern: '[^"\s]+( [^"\s]+)*'
+          type: string
+        - name: Agricultural
+          title: Agricultural land impacted.
+          description: Total agricultural land destroyed or seriously damaged.
+          type: integer
+          unit: 'm2'
+        - name: Hydropower
+          title: Destroyed hydropower capacity.
+          description: Total installed hydropower capacity destroyed
+          type: integer
+          unit: 'MW'
+        - name: Econ_damage
+          title: Total economic damage
+          description: Total quantified damage in monetary terms.
+          type: integer
+          unit: 'USD'
+        - name: Ref_scientific
+          title: Scientific source
+          description: Citation to scientific documentation of event.
+          type: string
+         - name: Ref_other
+          title: Other source
+          description: Link to other sources that documented the event.
+          type: string
+         - name: Remarks
+          title: Remarks
+          description: Any other notes.
+          constraints:
+            pattern: '[^"\s]+( [^"\s]+)*'
+          type: string
+
+
+- name: HMAGLOFDB_removed
+    title: Database of removed GLOF cases
+    description: Record of all events previously recorded in other databases that were removed for lack of evidence.
+    path: Database/GLOFs/HMAGLOFDB_removed.csv
+    format: csv
+    mediatype: text/csv
+    encoding: utf-8
+    dialect:
+      header: true
+      delimiter: ','
+      lineTerminator: "\n"
+      quoteChar: '"'
+      doubleQuote: true
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: GF_ID
+          title: Event identifier
+          description: Unique id for GLOF event, starting at 1.
+          type: integer
+          constraints:
+            required: true
+            unique: true
+        - name: Year_approx
+          title: Approximate year
+          description: Year of occurrence; given approximately if GLOF has been identified from imagery with no definite account. 
+          type: string
+        - name: Year_exact
+          title: Year of event
+          description: Exact year of event.
+          type: date
+          format: '%Y'
+        - name: Month
+          title: Month of occurence
+          description: Precise month of event if known.
+          type: date
+          format: '%m'
+        - name: Day
+          title: Day of occurence
+          description: Exact day the GLOF happened. If GLOF took place over multiple days, the last day is mentioned.
+          type: date
+          format: '%m'
+        - name: Lake_name
+          title: Lake name
+          description: Locally used lake name. If not available 'Unnamed'. Note that Co/Tsho/Pokhari are the regional words for 'lake'. The spelling is used according to the country the lake lies in. Separate spelling is used here, i.e. 'Lure Co' over 'Lureco'. Local names for lake: Co (China); Tsho (Bhutan/Nepal); Pokhari (Nepal). 
+          type: string
+        - name: Glacier_name
+          title: Glacier name
+          description: Locally used glacier name. If not available 'Unnamed'.
+          type: string
+        - name: GL_ID
+          title: Glacial lake identifier
+          description: |-
+            Identifier for lake following the ICIMOD database on glacial lakes in the HKH. If visible but not mapped 'not mapped', if an ephermeral lake 'ephemeral', if no detectable trace of a lake 'no lake'.
+
+            - not mapped: not in inventories
+            - ephemeral: ephemeral lake, possibly not visible in imagery 
+            - no lake: no lake detected and no further information available
+          type: string
+        - name: LakeDB_ID
+          title: Identifier for the database the lake was mapped in
+          description: |-
+            Lake database identifier (2 - Wang2020 (1990), 3 - Wang2020 (2018), 4 - Chen (2021); see the paper for a discussion of the inventories
+
+            - 2: Wang2020 (1990) 
+            - 3: Wang2020 (2018)
+		- 4: Chen2021
+          type: string
+        - name: G_ID
+          title: Glacier identifier
+          description: |-
+            Identifier for glacier, upstream of the glacial lake, following the GLIMS database. If visible but not mapped 'not mapped', if no detectable trace of a glacier 'no glacier'.
+
+            - not mapped: not in inventory
+            - no glacier: not in inventory and no present glacier visible. 
+          type: string
+        - name: Lat_lake
+          title: Latitude of source lake (°, WGS 84)
+          description: Latitude of lake taken from the inventory or mapped from satellite imagery. Can be at any point within the lake boundary.
+          constraints:
+            minimum: -90
+            maximum: 90
+          type: decimal
+        - name: Lon_lake
+          title: Longitude of source lake (°, WGS 84)
+          description: Longitude of lake taken from the inventory or mapped from satellite imagery. Can be at any point within the lake boundary.
+          constraints:
+            minimum: -180
+            maximum: 180
+          type: decimal
+        - name: Elev_lake
+          title: Elevation of source lake
+          description: Elevation of lake taken from the inventory or taken from SRTM. Can be at any point within the lake boundary. m a.s.l.
+          type: integer
+        - name: Lat_impact
+          title: Latitude of furthest observed impact (°, WGS 84)
+          description: Latitude of furthest reported or mapped impact the GLOF had (high flow, debris deposit, etc).
+          constraints:
+            minimum: -90
+            maximum: 90
+          type: decimal
+        - name: Lon_impact
+          title: Longitude of furthest observed impact (°, WGS 84)
+          description: Longitude of furthest reported or mapped impact the GLOF had (high flow, debris deposit, etc).
+          constraints:
+            minimum: -180
+            maximum: 180
+          type: decimal
+        - name: Elev_impact
+          title: Elevation of furthest observed impact.
+          description: Elevation of furthest reported or mapped impact the GLOF had (high flow, debris deposit, etc). m a.s.l.
+          type: integer
+        - name: Impact_type
+          title: Type of identification of impact
+          description: |-
+            Quality of impact record; ‘Observation’ refers to lowest observed high flow or damages; ‘Deposit’ refers to lowest visible deposit of sediments (from satellite imagery). Impacts are therefore conservative, and are likely always further downstream than recorded.
+
+            - Observation: impact noted locally
+            - Deposit: impact visible on satellite imagery 
+          type: string
+          constraints:
+            enum: ['Observation', 'Deposit', 'other']
+        - name: Lake_type
+          title: Type of source lake.
+          description: |-
+            Type of source lake as documented in literature or from imagery.
+
+            - Moraine dammed: moraine dammed lake
+            - Ice dammed: ice dammed lake 
+            - Bedrock: lake on bedrock
+            - Landslide dammed: landslide dammed lake  
+            - Water pocket: englacial water pocket
+            - Supraglacial: supraglacial lake
+            - Unknown: unknown type      
+          type: string
+          constraints:
+            enum: ['Moraine dammed', 'Ice dammed', 'Bedrock', 'Landslide dammed', 'Water pocket', 'Supraglacial', 'Unknown']
+        - name: Transboundary
+          title: Potential transboundary GLOF event
+          description: Defines if lake is draining into another country anywhere along the downstream river reach ('Y') or not ('N'). Does not make a statement about whether the GLOF itself was transboundary.
+          type: string
+          constraints:
+            enum: ['Y','N']
+        - name: Repeat
+          title: Repeat event
+          description: 'Y' if the same lake drained before or after, 'N' if a unique event.
+          type: string
+          constraints:
+            enum: ['Y','N']
+        - name: Region_RGI
+          title: RGI Region number.
+          description: Identifier for RGI region the GLOF occured in, following the RGI_CODE (see: https://nsidc.org/sites/nsidc.org/files/technical-references/RGI_Tech_Report_V6.0.pdf)
+          type: string
+        - name: Region_HiMAP
+          title: HiMAP Region number.
+          description: Identifier for HiMAP region the GLOF occured in, following the OBJECTID (https://doi.org/10.1007/978-3-319-92288-1_7)
+          type: integer
+        - name: Country
+          title: Country of GLOF
+          description: Country the GLOF started in. Refers to borders as in 2022, also for events that happened at a time when current (national) boundaries did not exist or were different.
+          type: string
+        - name: Province
+          title: Province of GLOF
+          description: Level 1 order province name of GLOF occurence. Refers to borders as in 2022, also for events that happened at a time when current (national) boundaries did not exist or were different.
+          type: string
+        - name: River_Basin
+          title: River Basin of GLOF
+          description: |-
+		Highest order river basin name the GLOF drained into. In transboundary cases the local name is used, hence the same river basin may appear under two different names. Individual name and local term for 'river' is written separately, i.e. 'Nian Chu' rather than 'Nianchu'. Exception is when the ending of '-qu' is used. Local names for river: Chhu (Bhutan, China), Tsangpo (China), '-qu' (China)
+		Rongxia (China) = Tama Koshi (Nepal)
+		Poiqu (China) = Sun Koshi (Nepal)
+		Pumqu (China) = Arun (Nepal)
+		Gyirong (China) = Trisuli (Nepal)
+          type: string
+        - name: Driver_lake
+          title: Driver of initial lake formation
+          description: |-
+            Climatic or non-climatic driver that resulted in formation of the lake (e.g. surging glacier, supraglacial melt)
+
+            - unknown: unknown formation process
+            - melt: any type of melt water input from upstream
+		- surging glacier: surging tongue blocking of stream
+		- glacier advance: advancing glacier tongue blocking of stream
+		- glacier calving: disintegration of glacier tongue into a lake  
+          type: string
+          constraints:
+            enum: ['unknown',  'melt', 'surging glacier', 'glacier advance', 'glacier calving']
+        - name: Driver_GLOF
+          title: Driver of the GLOF event
+          description: |-
+            Climatic or non-climatic driver that caused the GLOF
+
+            - unknown: unknown driver
+            - ice avalanche: ice avalanche hitting the lake
+		- landslide: landslide into the lake causing overtopping or dam failure
+		- intense rainfall: sudden intense rainfall resulting in increased hydrostatic pressure
+		- rockfall: rockfall into the lake causing overtopping or dam failure
+ 		- debris flow: debris flow into the lake causing overtopping or dam failure
+		- high temperatures: sudden heat onset resulting in rapid melt influx resulting eventually in a breach/failure
+          type: string
+          constraints:
+            enum: ['unknown', 'ice avalanche', 'landslide', 'intense rainfall', 'rockfall', 'debris flow', 'high temperatures']
+        - name: Mechanism
+          title: GLOF drainage mechanism
+          description: |-
+            Mechanism that caused the lake to breach or drain
+
+            - unknown: unknown process
+            - moraine collapse: dam/moraine collapse leading to drainage
+            - dam piping: dam/moraine collapse leading to drainage
+            - dam seepage: gradual drainage of water through the dam resulting in eventual collapse
+            - ice core thawing: known ice core at the center of the dam failing with increasing temperature
+            - englacial tunnel: tunnel forming englacially for ice dammed lake
+            - supraglacial lake drainage: rapid drainage of a supraglacial lake 
+            - subglacial tunnel: drainage any lake type subglacially 
+          type: string
+          constraints:
+            enum: ['unknown', 'moraine collapse', 'dam piping', 'dam seepage', 'ice core thawing', 'englacial tunnel', 'supraglacial lake drainage', 'subglacial tunnel']
+        - name: Area
+          title: Lake area before drainage
+          description: Lake area from source or on last available image before drainage or from local information
+          type: integer
+          unit: 'm2'
+        - name: Volume
+          title: Flood volume
+          description: Discharged volume (in most cases estimated from observed lake area change; see discussion of uncertainties in manuscript)
+          type: integer
+          unit: 'm3'
+        - name: Discharge_water
+          title: Liquid water discharge
+          description: Observed or estimated discharge of water
+          type: integer
+          unit: 'm3 s-1'
+        - name: Discharge_solid
+          title: Solid discharge
+          description: Observed or estimated discharge of solid material (i.e. debris flow volume)
+          type: integer
+          unit: 'm3 s-1'
+        - name: Impact
+          title: Downstream impact of GLOF
+          description: Narrative description of observed impacts downstream
+          constraints:
+            pattern: '[^"\s]+( [^"\s]+)*'
+          type: string
+        - name: Lives_total
+          title: Total lives lost
+          description: Total lives lost
+          type: integer
+        - name: Lives_male
+          title: Total male lives lost
+          description: Total male lives lost
+          type: integer
+        - name: Lives_female
+          title: Total female lives lost
+          description: Total female lives lost
+          type: integer
+        - name: Lives_disabilities
+          title: Total lives with disabilities lost
+          description: Total lives of people with disabilities lost
+          type: integer
+        - name: Injured_total
+          title: Total injured
+          description: Total number of people injured
+          type: integer
+        - name: Injured_male
+          title: Total male injured
+          description: Total male injured
+          type: integer
+        - name: Injured_female
+          title: Total female injured
+          description: Total number of women injured
+          type: integer
+        - name: Injured_disabilities
+          title: Total people with disabilities injured
+          description: Total number of people with disabilities injured
+          type: integer
+        - name: Displaced_total
+          title: Total displaced
+          description: Total number of people displaced
+          type: integer
+        - name: Displaced_male
+          title: Total male displaced
+          description: Total number of men displaced
+          type: integer
+        - name: Displaced_female
+          title: Total female displaced
+          description: Total number of women displaced
+          type: integer
+        - name: Displaced_disabilities
+          title: Total people with disabilities displaced
+          description: Total number of people with disabilities displaced
+          type: integer
+        - name: Livestock
+          title: Livestock killed
+          description: Total livestock killed (cattle, horses, mules etc; does not count poultry or fish)
+          type: integer
+        - name: Residential_destroyed
+          title: Residential houses destroyed
+          description: Total number of residential houses destroyed
+          type: integer
+        - name: Commercial_destroyed
+          title: Commercial houses destroyed
+          description: Total number of commercial houses destroyed
+          type: integer
+        - name: Residential_damaged
+          title: Residential houses damaged
+          description: Total number of residential houses damaged
+          type: integer
+        - name: Commercial_damaged
+          title: Commercial houses damaged
+          description: Total number of commercial houses damaged
+          type: integer
+        - name: Infra
+          title: General information on infrastructure damage
+          description: Information on any other infrastructure or assests destroyed or damaged.
+          constraints:
+            pattern: '[^"\s]+( [^"\s]+)*'
+          type: string
+        - name: Agricultural
+          title: Agricultural land impacted.
+          description: Total agricultural land destroyed or seriously damaged.
+          type: integer
+          unit: 'm2'
+        - name: Hydropower
+          title: Destroyed hydropower capacity.
+          description: Total installed hydropower capacity destroyed
+          type: integer
+          unit: 'MW'
+        - name: Econ_damage
+          title: Total economic damage
+          description: Total quantified damage in monetary terms.
+          type: integer
+          unit: 'USD'
+        - name: Ref_scientific
+          title: Scientific source
+          description: Citation to scientific documentation of event.
+          type: String
+         - name: Ref_other
+          title: Other source
+          description: Link to other sources that documented the event.
+          type: String
+         - name: Removal_reason
+          title: Reason for removal
+          description: Reasoning for removing the case.
+          constraints:
+            pattern: '[^"\s]+( [^"\s]+)*'
+          type: String
+         - name: Certainty
+          title: Certainty of removal
+          description:  |-
+            Certainty that removed cases is not a GLOF event.
+
+            - 0: definitely not a GLOF
+            - 1: possibly a GLOF 
+
+          constraints:
+            enum: [0, 1]
+          type: String
