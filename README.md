@@ -4,7 +4,7 @@
 
 Database of all GLOFs in high mountain Asia
 
-This repository includes the development version of the database as well as code that was used to analyse the database for the associated publication (https://doi.org/10.5194/essd-2022-395). The database is also updated annually on the RDS hosted at ICIMOD (https://doi.org/10.26066/RDS.1973283).
+This repository includes the development version of the database as well as code that was used to analyse the database for the associated publication (https://doi.org/10.5194/essd-2022-395). The database is also visualized and all data can be accessed via https://experience.arcgis.com/experience/20a0ef1d86ec4a77b2744df9e495214e . The database is also updated annually on the RDS hosted at ICIMOD (https://doi.org/10.26066/RDS.1973283).
 
 The GLOF database ('...Database/GLOFs') includes the actual database ('HMAGLOFDB.csv'), a database of GLOFs that were mentioned in previous publications but removed here for lack of evidence ('HMAGLOFDB_removed.csv') and a MetaData file ('HMAGLOFDB_Metadata.yml').
 
