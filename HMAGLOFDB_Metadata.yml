@@ -3,19 +3,19 @@ version: 1.1.0
 created: '2023-05-03T13:12:01Z'
 updated: '2024-01-00T00:10:01Z'
 id: https://doi.org/10.5281/zenodo.7271188
-title: High Mountain Asia Glacier Lake Outburst Flood Database (HMAGLOFDB)
+title: High Mountain Asia Glacial Lake Outburst Flood Database (HMAGLOFDB)
 description: |-
   Historic GLOFs in HMA. The latest development version can be accessed on https://github.com/fidelsteiner/HMAGLOFDB. However this data is not necessarily quality controlled before an official release. Issues or new events can be reported by contacting the authors (jff.steiner@gmail.com). For all integer options, '+' denotes that impact was >0 but numbers are unavailable.
 
 publications:
   - author: Finu Shrestha, Jakob Steiner, Reeju Shrestha, Yathartha Dhungel, Sharad P. Joshi, Sam Inglish, Arshad Ashraf, Sher Wali, Khwaja Momin Walizada, Taigang Zhang
-    title: HMAGLOFDB v1.0 – a comprehensive and version controlled database of glacier lake outburst floods in high mountain Asia
-    journal: in review
+    title: A comprehensive and version controlled database of glacial lake outburst floods in High Mountain Asia
+    journal: Earth System Science Data
     year: 2023
-    path: https://doi.org/10.5194/essd-2022-395
+    path: https://doi.org/10.5194/essd-15-3941-2023
 profile: tabular-data-package
-temporalCoverage: 1830-06-31
-spatialCoverage: high mountain Asia
+temporalCoverage: 1830-06-31 to 2023-12-31
+spatialCoverage: High Mountain Asia
 languages:
   - en
 licenses:
@@ -23,10 +23,9 @@ licenses:
     name: CC-BY-4.0
     path: https://creativecommons.org/licenses/by/4.0
 citation: |-
-  Steiner and Shrestha (2023): HMAGLOFDB 1.0.1 -  Database of GLOFs in high mountain Asia  (https://doi.org/10.5281/zenodo.7271188)
-sources:
-  - title: TBD
-    path: TBD
+  Steiner and Shrestha (2023): HMAGLOFDB 1.1.0 -  Database of GLOFs in high mountain Asia  (https://doi.org/10.5281/zenodo.7271188)
+contributors:
+  - author: Finu Shrestha, Jakob Steiner, Reeju Shrestha, Arshad Ashraf, Sher Wali, Khwaja Momin Walizada, Taigang Zhang
 resources:
   - name: HMAGLOFDB
     title: Event database
