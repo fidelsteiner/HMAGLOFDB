@@ -25,7 +25,7 @@ licenses:
 citation: |-
   Steiner and Shrestha (2023): HMAGLOFDB 1.1.0 -  Database of GLOFs in high mountain Asia  (https://doi.org/10.5281/zenodo.7271188)
 contributors:
-  - author: Finu Shrestha, Jakob Steiner, Reeju Shrestha, Arshad Ashraf, Sher Wali, Khwaja Momin Walizada, Taigang Zhang
+  - author: Finu Shrestha, Jakob Steiner, Reeju Shrestha, Arshad Ashraf, Sher Wali, Khwaja Momin Walizada, Taigang Zhang, Vitalii Zaginaev
 resources:
   - name: HMAGLOFDB
     title: Event database
