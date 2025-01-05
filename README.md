@@ -8,7 +8,7 @@ This repository includes the development version of the database as well as code
 
 The GLOF database ('...Database/GLOFs') includes the actual database ('HMAGLOFDB.csv'), a database of GLOFs that were mentioned in previous publications but removed here for lack of evidence ('HMAGLOFDB_removed.csv') and a MetaData file ('HMAGLOFDB_Metadata.yml').
 
-The database has been quality controlled up to 2023/12/31. Events with a later date in the database need to be evaluated and cross checked. 
+The database has been quality controlled up to 2024/12/31. Events with a later date in the database need to be evaluated and cross checked. 
 
 Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
 
