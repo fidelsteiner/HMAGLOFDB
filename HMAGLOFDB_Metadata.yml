@@ -61,18 +61,18 @@ resources:
           format: '%Y'
         - name: Sat_evidence
           title: Image IDs used as satellite imagery evidence
-          description: For cases where no exact date is known this column provides imagery names from the Landsat legacy products that either provide the first known evidence (hence constraining it to any date or eaelier) or two images that provide a time frame during which the event must have occured.
+          description: For cases where no exact date is known this column provides imagery names from the Landsat legacy products that either provide the first known evidence (hence constraining it to any date or earlier) or two images that provide a time frame during which the event must have occurred.
           type: string
         - name: Month
-          title: Month of occurence
+          title: Month of occurrence
           description: Precise month of event if known.
           type: date
           format: '%m'
         - name: Day
-          title: Day of occurence
+          title: Day of occurrence
           description: Exact day the GLOF happened. If GLOF took place over multiple days, the last day is mentioned.
           type: date
-          format: '%m'
+          format: '%d'
         - name: Lake_name
           title: Lake name
           description: Locally used lake name. If not available 'Unnamed'. Note that Co/Tsho/Pokhari are the regional words for 'lake'. The spelling is used according to the country the lake lies in. Separate spelling is used here, i.e. 'Lure Co' over 'Lureco'. Local names for lake: Co (China); Tsho (Bhutan/Nepal); Pokhari (Nepal). 
@@ -84,7 +84,7 @@ resources:
         - name: GL_ID
           title: Glacial lake identifier
           description: |-
-            Identifier for lake following the ICIMOD database on glacial lakes in the HKH. If visible but not mapped 'not mapped', if an ephermeral lake 'ephemeral', if no detectable trace of a lake 'no lake'.
+            Identifier for lake following the ICIMOD database on glacial lakes in the HKH. If visible but not mapped 'not mapped', if an ephemeral lake 'ephemeral', if no detectable trace of a lake 'no lake'.
 
             - not mapped: not in inventories
             - ephemeral: ephemeral lake, possibly not visible in imagery 
